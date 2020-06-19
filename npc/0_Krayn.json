@@ -5,6 +5,12 @@
 
   "display_id" : 0,
   "race": 0,
+
+  "server": "WS01",
+  "position_x": 2.2,
+  "position_y": 2.2,
+  "is_merchant": false,
+  "lore": "Tjisewehvurehvu hu uhurhv urvhure vhurehv",
   "allies": []
 
 }
