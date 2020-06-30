@@ -175,8 +175,7 @@ class FQuest:
         self.setupNpcListbox()
         print("index : ", index)
         print("self._mapIdxToId[index] : ", self._mapIdxToId[index])
-        print("NPC Selection : id_name: ", self._listNpc[int(self._mapIdxToId[index])], " ==> index:", index,
-              ", value: ", self._listNpcBox.get(index))
+        print("NPC Selection : id_name: ", self._listNpc[int(self._mapIdxToId[index])], " => index:", index, ", value: ", self._listNpcBox.get(index))
         self.updateLeftPanel(self._pathToNpcFolder + "/" + self._listNpc[int(self._mapIdxToId[index])] + ".json")
 
     def display(self):
