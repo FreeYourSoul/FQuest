@@ -134,11 +134,26 @@ class FQuest:
         self._secondFrame.add(secondLine)
         self._secondFrame.add(Button(self._secondFrame, text='Lua Script', command=lambda: self._scriptLUA.display()))
         self._secondFrame.add(thirdLine)
-        self._secondFrame.add(Button(self._secondFrame, text='Save'))
+        self._secondFrame.add(Button(self._secondFrame, text='Save', command=self.saveNPC))
 
         self._firstFrame.pack(side=LEFT, expand=Y, fill=BOTH, pady=2, padx=2)
         self._secondFrame.pack(side=RIGHT, expand=Y, padx=10, pady=10)
 
+    def saveNPC(self):
+        npcJson={}
+        npcJson["id"] = self._id.get()
+        npcJson["name"] = self._currentSelectionName.get()
+        npcJson["display_id"] = 42
+        npcJson["race"] = ""
+        npcJson["server"] = ""
+        npcJson["position_x"] = self._x.get()
+        npcJson["position_y"] = self._y.get()
+        npcJson["is_merchant"] = False
+        npcJson["lore"] = "lore"
+        npcJson["allies"] = []
+        print(json.dumps(npcJson))
+        self.setupNpcListbox()
+                
     def setupNpcListbox(self):
         self._listNpc = []
         self._mapIdxToId = {}
@@ -191,5 +206,5 @@ if __name__ == "__main__":
     parser.parse_args()
     if not args.npc:
         print ('NPC folder has to be given via --npc command')
-        return
-    FQuest(args.npc).display()
+    else:
+        FQuest(args.npc).display()
