@@ -147,7 +147,7 @@ class FQuest:
         for f in (f for f in listdir(self._pathToNpcFolder) if isfile(join(self._pathToNpcFolder, f))):
             npcFullName = os.path.splitext(f)[0]
             self._listNpc.append(npcFullName)
-            if self._searchNPC.get().upper() in npcFullName.upper():
+            if self._searchNPC.get() in npcFullName:
                 splits = npcFullName.split("_")
                 self._mapIdxToId[i] = int(splits[0])
                 self._listNpcBox.insert(END, splits[1])
@@ -189,4 +189,7 @@ if __name__ == "__main__":
 
     print("start FQuest with base path : ", args.npc)
     parser.parse_args()
+    if not args.npc:
+        print ('NPC folder has to be given via --npc command')
+        return
     FQuest(args.npc).display()
