@@ -147,7 +147,7 @@ class FQuest:
         for f in (f for f in listdir(self._pathToNpcFolder) if isfile(join(self._pathToNpcFolder, f))):
             npcFullName = os.path.splitext(f)[0]
             self._listNpc.append(npcFullName)
-            if self._searchNPC.get() in npcFullName:
+            if self._searchNPC.get().upper() in npcFullName.upper():
                 splits = npcFullName.split("_")
                 self._mapIdxToId[i] = int(splits[0])
                 self._listNpcBox.insert(END, splits[1])
